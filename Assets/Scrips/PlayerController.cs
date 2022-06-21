@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _renderer;
     private Animator _animator;
   
+    public float JumpForce = 10;
     public float velocity = 10;
         
     private static readonly int right = 1;
@@ -43,7 +44,8 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 10);
+            _rigidbody2D.AddForce(Vector2.up*JumpForce,ForceMode2D.Impulse);
+           // ChangeAnimation(Animation_jump);
         }
     }
     private void Desplazarse(int position)
